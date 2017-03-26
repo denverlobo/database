@@ -22,6 +22,7 @@ import java.util.Random;
 
 class NameGenerator {
 
+	//To generate random names
 	private static String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru", "Ray", "Bre", "Zed", "Drak", "Mor", "Jag",
 			"Mer", "Jar", "Mjol", "Zork", "Mad", "Cry", "Zur", "Creo", "Azak", "Azur", "Rei", "Cro", "Mar", "Luk" };
 	private static String[] Middle = { "air", "ir", "mi", "sor", "mee", "clo", "red", "cra", "ark", "arc", "miri",
@@ -29,6 +30,7 @@ class NameGenerator {
 	private static String[] End = { "d", "ed", "ark", "arc", "es", "er", "der", "tron", "med", "ure", "zur", "cred",
 			"mur" };
 
+	//To generate random titles
 	private static String[] heading = { "B", "A", "X", "T", "Cr", "Mnfy", "Bre ", "Zed ", "Drak", "Mor", "Jag", "Mer",
 			"Jar", "Mjol", "Zork", "Mad", "Cry", "Zur", "Creo", "Azak", "Azur", "Rei", " Cro", "M ar", "L uk" };
 	private static String[] words = { "d", "ed", "ark ", "of ", " arc", "es", "e r", "de r", "tron", "m ed", "ur e",
@@ -82,7 +84,6 @@ public class DataGenerator {
 			for (int i = 0; i < 8; i++) {
 				building[i] = randInt(1, 20);
 				output = depts[i] + "|" + building[i] + "|" + randInt(500000, 2000000);
-				//System.out.println(output);
 				file.write(output + newLine);
 			}
 			file.close();
@@ -100,9 +101,8 @@ public class DataGenerator {
 
 			for (int i = 0; i < 20; i++) {
 				for (int j = 0; j < 15; j++) {
-					roomNumber[i][j] = j+1;//randInt(1, 15);
+					roomNumber[i][j] = j+1;
 					output = i + 1 + "|" + roomNumber[i][j] + "|" + randInt(15, 200);
-					//System.out.println(output);
 					file.write(output + newLine);
 				}
 
@@ -139,7 +139,6 @@ public class DataGenerator {
 													: (temp == 4) ? "3:15" : (temp == 5) ? "4:45" : "6:15");
 				}
 				output = i + "|" + day + "|" + startTime + "|" + endTime;
-				//System.out.println(output);
 				file.write(output + newLine);
 
 			}
@@ -158,7 +157,6 @@ public class DataGenerator {
 				studentId[j] = j + 1;
 				output = studentId[j] + "|" + NameGenerator.generateName() + "|" + depts[randInt(0, 7)] + "|"
 						+ randInt(1, 130);
-				//System.out.println(output);
 				file.write(output + newLine);
 			}
 			file.close();
@@ -171,16 +169,11 @@ public class DataGenerator {
 	public static void generateInstructor() {
 		try {
 			file = new FileWriter("Instructor.txt");
-			int deptNo ;
-			List<Integer> itemList = new ArrayList<Integer>();
 			int[] instructorId = new int[scaleFactor * 100];
 			for (int j = 0; j < scaleFactor * 100; j++) {
 				instructorId[j] = j + 1;
-				deptNo = randInt(0, 7);
-				
 				output = instructorId[j] + "|" + NameGenerator.generateName() + "|" + depts[randInt(0, 7)] + "|"
 						+ randInt(30000, 150000);
-				//System.out.println(output);
 				file.write(output + newLine);
 			}
 			file.close();
@@ -199,7 +192,6 @@ public class DataGenerator {
 				if (i % 4 == 0) {
 					k++;
 				}
-				//System.out.println(output);
 				file.write(output + newLine);
 			}
 			file.close();
@@ -213,7 +205,6 @@ public class DataGenerator {
 		try {
 			file = new FileWriter("Courses.txt");
 			int[] courseId = new int[(int) (scaleFactor * 100 * 2.5)];
-			List<Integer> itemList = new ArrayList<Integer>();
 			int deptNo;
 			for (int i = 0; i < (int) (scaleFactor * 100 * 2.5); i++) {
 				courseId[i] = i + 1;
@@ -284,10 +275,7 @@ public class DataGenerator {
 			int[] instructorId = new int[(int) (scaleFactor * 100 * 2.5 * 3 * 1.1)];
 			int[] courseId = new int[(int) (scaleFactor * 100 * 2.5 * 3 * 1.1)];
 			String sem;
-			List<Integer> tempList=null;
-			int dept;
 			for (int i = 0; i < (int) (scaleFactor * 100 * 2.5 * 3 * 1.1); i++) {
-				dept= randInt(0, 7);
 				instructorId[i] = i+1;
 				courseId[i]=randInt(1, (int)(scaleFactor * 100 * 2.5));
 				
@@ -307,7 +295,7 @@ public class DataGenerator {
 		}
 	}
 
-	public static void generateTakes() { // apply Logic
+	public static void generateTakes() { 
 		try {
 			file = new FileWriter("Takes.txt");
 			String sem, grade = "ABCDEF";
